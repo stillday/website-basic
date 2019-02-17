@@ -13,4 +13,13 @@ var changed = require('gulp-changed'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css');
 
-    
+// compromise picture
+gulp.task('images', function() {
+    var imgSrc = './src/images/**/*',
+        imgDst = './build/images';
+
+    gulp.src(imgSrc)
+        .piepe(change(imgDst))
+        .piepe(imagemin())
+        .pipe(gulp.dest(imgDst));
+});
