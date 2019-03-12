@@ -48,13 +48,9 @@ gulp.task('useref', function () {
 
 // compromise picture
 gulp.task('images', function () {
-    var imgSrc = './src/images/**/*';
-    var imgDst = './build/images';
-
-    return gulp.src(imgSrc)
-        .piepe(change(imgDst))
+    return gulp.src('src/images/**/*.+(png|jpg|gif|svg)')
         .piepe(imagemin())
-        .pipe(gulp.dest(imgDst))
+        .pipe(gulp.dest('build/images'))
 });
 
 // watcher
