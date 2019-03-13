@@ -74,10 +74,12 @@ gulp.task('watch', function () {
             baseDir: 'build'
         },
     })
-    gulp.watch('src/scss/**/*.scss', gulp.series('sass'));
-    gulp.watch('src/js/**/*.js', gulp.series('js'));
-    gulp.watch('src/images/**/*.+(png|jpg|gif|svg)', gulp.series('images'));
+    gulp.watch('src/scss/**/*.scss', gulp.series('sass', 'useref'));
+    gulp.watch('src/js/**/*.js', gulp.series('js', 'useref'));
+    gulp.watch('src/images/**/*.+(png|jpg|gif|svg)', gulp.series('images', 'useref'));
     gulp.watch('src/font/**/*', gulp.series('font'));
+    gulp.watch('src/*.html', gulp.series('useref'));
     gulp.watch('src/*.html').on('change', browserSync.reload);
     gulp.watch('src/js/**/*.js', browserSync.reload);
+    gulp.watch('src/scss/**/*.scss', browserSync.reload);
 });
