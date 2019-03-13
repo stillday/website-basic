@@ -4,7 +4,6 @@ var gulp = require('gulp');
 // include pluginns
 // var changed = require('gulp-changed');
 // var jshint = require('gulp-jshint');
-// var concat = require('gulp-concat');
 // var rename = require('gulp-rename');
 // var clean = require('gulp-clean');
 // var minifyhtml = require ('gulp-minify-html');
@@ -16,6 +15,7 @@ var gulpIf = require('gulp-if');
 var uglify = require('gulp-uglify');
 var cssnano = require('gulp-cssnano');
 var imagemin = require('gulp-imagemin');
+var concat = require('gulp-concat');
 
 
 // browser sync
@@ -31,10 +31,18 @@ gulp.task('browserSync', function () {
 gulp.task('sass', function () {
     return gulp.src('./src/scss/**/*.scss')
         .pipe(sass())
+        .pipe(concat('main.css'))
         .pipe(gulp.dest('./build/css'))
         .pipe(browserSync.reload({
             stream: true
         }))
+});
+
+// gulp task js
+gulp.task('js', function () {
+    return gulp.src('src/js/**/*.js')
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest('build/js'))
 });
 
 // uueref
@@ -53,6 +61,12 @@ gulp.task('images', function () {
         .pipe(gulp.dest('build/images'))
 });
 
+// font copy
+gulp.task('font', function () {
+    return gulp.src('src/font/**/*')
+        .pipe(gulp.dist('build/font'))
+});
+
 // watcher
 gulp.task('watch', function () {
     browserSync.init({
@@ -61,6 +75,9 @@ gulp.task('watch', function () {
         },
     })
     gulp.watch('src/scss/**/*.scss', gulp.series('sass'));
+    gulp.watch('src/js/**/*.js', gulp.series('js'));
+    gulp.watch('src/images/**/*.+(png|jpg|gif|svg)', gulp.series('images'));
+    gulp.watch('src/font/**/*', gulp.series('font'));
     gulp.watch('src/*.html').on('change', browserSync.reload);
     gulp.watch('src/js/**/*.js', browserSync.reload);
 });
