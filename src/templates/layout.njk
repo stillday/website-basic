@@ -1,0 +1,13 @@
+<!--src/templates/layout.njk -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        {% block title %} {% endblock %}
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        {% include "partials/navigation.njk" %}
+        {% block content %} {% endblock %}
+    </body>
+</html>

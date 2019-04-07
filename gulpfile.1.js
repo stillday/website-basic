@@ -1,17 +1,15 @@
 // gulp.js include
 var gulp = require('gulp');
 
-var browserSync = require('browser-sync').create();
-var cssnano = require('gulp-cssnano');
+var nunjucks = require('gulp-nunjucks');
 var sass = require('gulp-sass');
-var nunjucksRender = require('gulp-nunjucks-render');
+var browserSync = require('browser-sync').create();
 var useref = require('gulp-useref');
 var gulpIf = require('gulp-if');
 var uglify = require('gulp-uglify');
+var cssnano = require('gulp-cssnano');
 var imagemin = require('gulp-imagemin');
 var concat = require('gulp-concat');
-// var newer = requiere('gulp-newer');
-
 
 
 // browser sync
@@ -57,20 +55,7 @@ gulp.task('images', function () {
         .pipe(gulp.dest('build/images'))
 });
 
-// nunjucks compile njk to html
-gulp.task('nunjucks', function () {
-    return gulp.src('src/templates/pages/**/*.+(html|njk|nunjucks')
-        .pipe(nunjucksRender({
-            path: ['src/templates/']
-        }))
-        .pipe(gulp.dest('src'))
-    // .pipe(browserSync.reload({ stream: true }));
-})
-
-// html processing 
-// gulp.task('html', function () {
-//     return gulp.src()
-// })
+// nunjucks compile
 
 
 // font copy
@@ -87,7 +72,6 @@ gulp.task('watch', function () {
         },
     })
     gulp.watch('src/scss/**/*.scss', gulp.series('sass', 'useref'));
-    gulp.watch('src/templates/**/*.njk', gulp.series('nunjucks'));
     gulp.watch('src/js/**/*.js', gulp.series('js', 'useref'));
     gulp.watch('src/images/**/*.+(png|jpg|gif|svg)', gulp.series('images', 'useref'));
     gulp.watch('src/font/**/*', gulp.series('font'));
