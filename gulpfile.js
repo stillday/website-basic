@@ -59,7 +59,7 @@ gulp.task('images', function () {
 
 // nunjucks compile njk to html
 gulp.task('nunjucks', function () {
-    return gulp.src('src/templates/pages/**/*.+(html|njk|nunjucks')
+    return gulp.src('src/pages/**/*.+(html|njk|nunjucks')
         .pipe(nunjucksRender({
             path: ['src/templates/']
         }))
