@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAAA,KACE,SAAU,CACV,QAAS,CACT,mBAAS,CAAT,mBAAS,CAAT,YAAa,CACd,KAGC,kBAAmB","file":"app.css","sourcesContent":["html {\r\n  padding: 0;\r\n  margin: 0;\r\n  display: flex;\r\n}\r\n\r\nbody {\r\n  background: #f4f4f4;\r\n}"]}
