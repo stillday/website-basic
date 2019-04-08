@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" contentn="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Website basic</title>
-  <link rel="stylesheet" href="/css/app.css">
-  <script src="/js/app.js"></script>
+    {% include "partials/head.html" %}   
 </head>
-
+ 
 <body>
-  {% block content  %}
-  {% endblock %}
+    {% include "partials/navbar.html" %}
+    <main>
+      {% block content %} {% endblock %}
+    </main>
+    {% include "partials/footer.html" %}
 </body>
+ 
+</html>

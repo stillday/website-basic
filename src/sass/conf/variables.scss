@@ -1,0 +1,78 @@
+//= VARIABLES
+
+
+// bootstrap overrides
+//---------------------------------------------
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1170px
+);
+
+$grid-gutter-width:           20px;
+
+
+// widths
+//---------------------------------------------
+$page-min-width:              320px;
+$page-max-width:              1170px;
+$page-small-width:            770px;
+
+
+// colors
+//---------------------------------------------
+// we do not use css variables yet, because
+// of internet explorer 11 - we do not want to bloat css
+/*
+:root { 
+  --bg-gray:                  #0f2765;
+}*/
+
+$bg-overlay:                  rgba(#000, 0.5);
+$text-color:                  #000;
+$border-color:                #ccc;
+$brand-color:                 #0099ff;
+
+
+// z-index
+//---------------------------------------------
+$z-index-loader:              1000;
+$z-index-page-header:         999;
+
+$z-index-cookie:              999;
+
+$z-index-mobile-nav:          1001;
+$z-index-mobile-overlay:      1000;
+
+$z-index-nav-sub:             1001;
+
+$z-index-logo:                10;
+$z-index-mobile-nav-header:   5;
+$z-index-pageup:              5;
+
+$z-index-dropdown:            1;
+
+$z-index-modal:               1001;
+$z-index-modal-backdrop:      1000;
+
+
+// margin maps
+//---------------------------------------------
+$margin-xl: (min : 50px, max : 60px);
+$margin-lg: (min : 40px, max : 50px); 
+$margin-md: (min : 30px, max : 40px); 
+$margin-sm: (min : 15px, max : 30px);
+$margin-xs: (min : 5px,  max : 15px);
+
+
+// fonts & base
+//---------------------------------------------
+$font:                        'Frutiger', Arial, sans-serif;
+$font-icon:                   'icons';
+
+$base-font-family:            Arial, sans-serif;
+$base-font-size:              18px;
+$base-line-height:            1.0;
+$line-height-text:            1.6;
+$base-font-color:             #000;

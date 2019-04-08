@@ -17,7 +17,7 @@ const dist = "dist/"
 const source = "src/"
 
 const css = {
-  in: source + "sass/app.scss",
+  in: source + "sass/*.scss",
   out: dist + "css/",
   sassOpts: {
     outputStyle: "compressed",
@@ -39,7 +39,7 @@ const nunjuck = {
   in: source + "pages/**/*.html",
   out: dist,
   path: source + "templates",
-  watch: ""
+  watch: [source + "pages/**/*.html", source + "templates"]
 };
 
 const syncOpts = {
@@ -67,6 +67,7 @@ function style(cb) {
     .pipe(sourcemaps.init())
     .pipe(sass(css.sassOpts))
     .pipe(autoprefixer(css.autoprefixerOpts))
+    .pipe(concat("app.css"))
     .pipe(sourcemaps.write('.'))
     .pipe(dest(css.out))
   watch(css.watch, series(style, browsersync.reload))

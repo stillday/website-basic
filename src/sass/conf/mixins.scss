@@ -1,0 +1,191 @@
+//= MIXINS
+
+
+// clearfix
+//---------------------------------------------
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+
+// ========================================================
+// FLUID FONT SIZE
+// ========================================================
+
+// strip units
+//---------------------------------------------
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+// fluid calculation
+//---------------------------------------------
+@mixin fluid-type-calc($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+}
+
+// fluid typography, media queries included
+//---------------------------------------------
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  @media (min-width: $max-vw) {
+    font-size: $max-font-size;
+  }
+
+  @media (max-width: $max-vw) {
+    @include fluid-type-calc($min-vw, $max-vw, $min-font-size, $max-font-size);
+  }
+
+  @media (max-width: $min-vw) {
+    font-size: $min-font-size;
+  }
+}
+
+
+// ========================================================
+// FLUID MARGINS
+// ========================================================
+
+// margin top
+//---------------------------------------------
+@mixin fluid-margin-top-calc($min-width, $max-width, $min-margin-size, $max-margin-size) {
+  margin-top: calc(#{$min-margin-size} + #{strip-unit($max-margin-size - $min-margin-size)} * ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}));
+}
+
+@mixin fluid-margin-top($min-width, $max-width, $min-margin-size, $max-margin-size) {
+  @media (min-width: $max-width) {
+    margin-top: $max-margin-size;
+  }
+
+  @media (max-width: $max-width) {
+    @include fluid-margin-top-calc($min-width, $max-width, $min-margin-size, $max-margin-size);
+  }
+
+  @media (max-width: $min-width) {
+    margin-top: $min-margin-size;
+  }
+}
+
+
+// margin bottom
+//---------------------------------------------
+@mixin fluid-margin-bottom-calc($min-width, $max-width, $min-margin-size, $max-margin-size) {
+  margin-bottom: calc(#{$min-margin-size} + #{strip-unit($max-margin-size - $min-margin-size)} * ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}));
+}
+
+@mixin fluid-margin-bottom($min-width, $max-width, $min-margin-size, $max-margin-size) {
+  @media (min-width: $max-width) {
+    margin-bottom: $max-margin-size;
+  }
+
+  @media (max-width: $max-width) {
+    @include fluid-margin-bottom-calc($min-width, $max-width, $min-margin-size, $max-margin-size);
+  }
+
+  @media (max-width: $min-width) {
+    margin-bottom: $min-margin-size;
+  }
+}
+
+
+// ========================================================
+// FLUID PADDINGS
+// ========================================================
+
+// padding top
+//---------------------------------------------
+@mixin fluid-padding-top-calc($min-width, $max-width, $min-padding-size, $max-padding-size) {
+  padding-top: calc(#{$min-padding-size} + #{strip-unit($max-padding-size - $min-padding-size)} * ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}));
+}
+
+@mixin fluid-padding-top($min-width, $max-width, $min-padding-size, $max-padding-size) {
+  @media (min-width: $max-width) {
+    padding-top: $max-padding-size;
+  }
+
+  @media (max-width: $max-width) {
+    @include fluid-padding-top-calc($min-width, $max-width, $min-padding-size, $max-padding-size);
+  }
+
+  @media (max-width: $min-width) {
+    padding-top: $min-padding-size;
+  }
+}
+
+
+// padding bottom
+//---------------------------------------------
+@mixin fluid-padding-bottom-calc($min-width, $max-width, $min-padding-size, $max-padding-size) {
+  padding-bottom: calc(#{$min-padding-size} + #{strip-unit($max-padding-size - $min-padding-size)} * ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}));
+}
+
+@mixin fluid-padding-bottom($min-width, $max-width, $min-padding-size, $max-padding-size) {
+  @media (min-width: $max-width) {
+    padding-bottom: $max-padding-size;
+  }
+
+  @media (max-width: $max-width) {
+    @include fluid-padding-bottom-calc($min-width, $max-width, $min-padding-size, $max-padding-size);
+  }
+
+  @media (max-width: $min-width) {
+    padding-bottom: $min-padding-size;
+  }
+}
+
+// padding left
+//---------------------------------------------
+@mixin fluid-padding-left-calc($min-width, $max-width, $min-padding-size, $max-padding-size) {
+  padding-left: calc(#{$min-padding-size} + #{strip-unit($max-padding-size - $min-padding-size)} * ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}));
+}
+
+@mixin fluid-padding-left($min-width, $max-width, $min-padding-size, $max-padding-size) {
+  @media (min-width: $max-width) {
+    padding-left: $max-padding-size; 
+  }
+
+  @media (max-width: $max-width) {
+    @include fluid-padding-left-calc($min-width, $max-width, $min-padding-size, $max-padding-size);
+  }
+
+  @media (max-width: $min-width) {
+    padding-left: $min-padding-size;
+  }
+}
+
+
+// padding right
+//---------------------------------------------
+@mixin fluid-padding-right-calc($min-width, $max-width, $min-padding-size, $max-padding-size) {
+  padding-right: calc(#{$min-padding-size} + #{strip-unit($max-padding-size - $min-padding-size)} * ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}));
+}
+
+@mixin fluid-padding-right($min-width, $max-width, $min-padding-size, $max-padding-size) {
+  @media (min-width: $max-width) {
+    padding-right: $max-padding-size;
+  }
+
+  @media (max-width: $max-width) {
+    @include fluid-padding-right-calc($min-width, $max-width, $min-padding-size, $max-padding-size);
+  }
+   
+  @media (max-width: $min-width) {
+    padding-right: $min-padding-size;
+  }
+}
+
+// User select
+// For selecting text on the page
+@mixin user-select($select) {
+    -webkit-user-select: $select;
+    -moz-user-select: $select;
+    -ms-user-select: $select; // IE10+
+    user-select: $select;
+}
