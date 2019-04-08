@@ -1,0 +1,160 @@
+// HELPER CLASSES
+
+// ========================================================
+// MARGINS
+// ========================================================
+
+// top
+// --------------------------------------------------------
+.margin--top-xl {
+  @include fluid-margin-top($page-min-width, $page-max-width, map-get($margin-xl, min), map-get($margin-xl, max));
+}
+
+.margin--top-lg {
+  @include fluid-margin-top($page-min-width, $page-max-width, map-get($margin-lg, min), map-get($margin-lg, max));
+}
+
+.margin--top-md {
+  @include fluid-margin-top($page-min-width, $page-max-width, map-get($margin-md, min), map-get($margin-md, max));
+}
+
+.margin--top-sm {
+  @include fluid-margin-top($page-min-width, $page-max-width, map-get($margin-sm, min), map-get($margin-sm, max));
+}
+ 
+.margin--top-xs {
+  @include fluid-margin-top($page-min-width, $page-max-width, map-get($margin-xs, min), map-get($margin-xs, max));
+}
+
+// bottom
+// --------------------------------------------------------
+.margin--bottom-xl {
+  @include fluid-margin-bottom($page-min-width, $page-max-width, map-get($margin-xl, min), map-get($margin-xl, max));
+}
+
+.margin--bottom-lg {
+  @include fluid-margin-bottom($page-min-width, $page-max-width, map-get($margin-lg, min), map-get($margin-lg, max));
+}
+
+.margin--bottom-md {
+  @include fluid-margin-bottom($page-min-width, $page-max-width, map-get($margin-md, min), map-get($margin-md, max));
+}
+
+.margin--bottom-sm {
+  @include fluid-margin-bottom($page-min-width, $page-max-width, map-get($margin-sm, min), map-get($margin-sm, max));
+}
+
+.margin--bottom-xs {
+  @include fluid-margin-bottom($page-min-width, $page-max-width, map-get($margin-xs, min), map-get($margin-xs, max));
+}
+
+
+// ========================================================
+// PADDINGS
+// ========================================================
+
+// top
+// --------------------------------------------------------
+.padding--top-xl {
+  @include fluid-padding-top($page-min-width, $page-max-width, map-get($margin-xl, min), map-get($margin-xl, max));
+}
+
+.padding--top-lg {
+  @include fluid-padding-top($page-min-width, $page-max-width, map-get($margin-lg, min), map-get($margin-lg, max));
+}
+
+.padding--top-md {
+  @include fluid-padding-top($page-min-width, $page-max-width, map-get($margin-md, min), map-get($margin-md, max));
+}
+
+.padding--top-sm {
+  @include fluid-padding-top($page-min-width, $page-max-width, map-get($margin-sm, min), map-get($margin-sm, max));
+}
+
+.padding--top-xs {
+  @include fluid-padding-top($page-min-width, $page-max-width, map-get($margin-xs, min), map-get($margin-xs, max));
+}
+
+// bottom
+// --------------------------------------------------------
+.padding--bottom-xl {
+  @include fluid-padding-bottom($page-min-width, $page-max-width, map-get($margin-xl, min), map-get($margin-xl, max));
+}
+
+.padding--bottom-lg {
+  @include fluid-padding-bottom($page-min-width, $page-max-width, map-get($margin-lg, min), map-get($margin-lg, max));
+}
+
+.padding--bottom-md {
+  @include fluid-padding-bottom($page-min-width, $page-max-width, map-get($margin-md, min), map-get($margin-md, max));
+}
+
+.padding--bottom-sm {
+  @include fluid-padding-bottom($page-min-width, $page-max-width, map-get($margin-sm, min), map-get($margin-sm, max));
+}
+
+.padding--bottom-xs {
+  @include fluid-padding-bottom($page-min-width, $page-max-width, map-get($margin-xs, min), map-get($margin-xs, max));
+}
+
+.padding-container-sm {
+  padding: 30px;
+
+  // @include media-breakpoint-down(sm) {
+  //   padding: 20px;
+  // }
+}
+
+.padding-container-xs {
+  padding: 15px 20px;
+
+  // @include media-breakpoint-down(sm) {
+  //   padding: 10px; 
+  // }
+}
+// ========================================================
+// TEXT ALIGN
+// ========================================================
+.align--right {
+  text-align: right;
+}
+
+.align--left {
+  text-align: left;
+}
+
+.align--center {
+  text-align: center;
+}
+
+
+// ========================================================
+// FLOATS
+// ========================================================
+.float--right {
+  float: right;
+}
+
+.float--left {
+  float: left;
+}
+
+
+// ========================================================
+// TEXT WHITE SPACE
+// ========================================================
+.text--nowrap {
+  white-space: nowrap;
+}
+
+
+// ========================================================
+// DISPLAY
+// ========================================================
+.display--block {
+  display: block;
+}
+
+.display--inline-block {
+  display: inline-block;
+}
