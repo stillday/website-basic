@@ -1,0 +1,122 @@
+﻿//= PRINT
+
+@media print {
+  // variables
+  //---------------------------------------------
+  $print-border-color: black;
+
+
+  // placeholders
+  //---------------------------------------------
+  %no-display {
+    display: none !important;
+  }
+
+  %avoid-page-break-inside {
+    page-break-inside: avoid;
+  }
+
+  %no-content {
+    content: none !important;
+  }  
+
+  // bootstrap resets
+  //---------------------------------------------
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    font-family: Helvetica !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  // Don't show links that are fragment identifiers,
+  // or use the `javascript:` pseudo protocol
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    @extend %avoid-page-break-inside;
+  }
+
+  thead {
+    display: table-header-group; // h5bp.com/t
+  }
+
+  tr,
+  img {
+    @extend %avoid-page-break-inside;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    @extend %avoid-page-break-inside;
+  }
+
+  // Bootstrap components
+  .navbar {
+    @extend %no-display;
+  }
+
+  .btn,
+  .dropup > .btn {
+    > .caret {
+      border-top-color: $print-border-color !important;
+    }
+  }
+
+  .label {
+    border: 1px solid $print-border-color;
+  }
+
+  .table {
+    border-collapse: collapse !important;
+
+    td,
+    th {
+      background-color: #fff !important;
+    }
+  }
+
+  .table-bordered {
+    th,
+    td {
+      border: 1px solid #ddd !important;
+    }
+  }
+
+  // custom print styles
+  //---------------------------------------------
+
+  
+}
