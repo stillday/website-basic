@@ -19,6 +19,11 @@ $page-min-width:              320px;
 $page-max-width:              1170px;
 $page-small-width:            770px;
 
+// desktop -> mobile
+//---------------------------------------------
+$desktop: 770px;
+$mobile: 769px;
+
 
 // colors
 //---------------------------------------------
@@ -30,9 +35,10 @@ $page-small-width:            770px;
 }*/
 
 $bg-overlay:                  rgba(#000, 0.5);
-$text-color:                  #000;
-$border-color:                #ccc;
-$brand-color:                 #0099ff;
+$text-color:                  #fff;
+$border-color:                #000;
+$brand-color:                 #31465C;
+$hover-color:                 #ad0014;
 
 
 // z-index
@@ -69,10 +75,19 @@ $margin-xs: (min : 5px,  max : 15px);
 // fonts & base
 //---------------------------------------------
 $font:                        'Frutiger', Arial, sans-serif;
-$font-icon:                   'icons';
+$font-icon:                   'icon';
 
 $base-font-family:            Arial, sans-serif;
 $base-font-size:              18px;
 $base-line-height:            1.0;
 $line-height-text:            1.6;
 $base-font-color:             #000;
+
+// font weights
+//---------------------------------------------
+$font-weight: (
+  regular: 400,
+  medium: 500,
+  bold: 700,
+  extraBold: 800
+);

@@ -1,0 +1,58 @@
+// =TYPOGRAHOY
+
+// ========================================================
+// HEADLINES
+// ========================================================
+/*
+INFO: we do not style the H-Tag. If a headline should get a specific style (e.g. h1, h2, ..) 
+add the needed classes (e.g. .h1, .h2, .h3, ...). This way we are very flexible in the design
+and the correct headline outline still can be assured.
+*/
+
+// shared styles
+//---------------------------------------------
+
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+  color: $text-color;
+  font-weight: map-get($font-weight, extraBold);
+  font-family: $font;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+
+.h1, .h2, .h3, .h4, .h5 {
+  display: block; // make sure spans are displayed as block elements
+}
+
+// headline 1
+//---------------------------------------------
+.h1 {
+  @include fluid-type(320px, 1280px, 32px, 46px);
+}
+
+// headline 2
+//---------------------------------------------
+.h2 {
+  @include fluid-type(320px, 1280px, 28px, 32px);
+}
+
+// headline 3
+//---------------------------------------------
+.h3 {
+  @include fluid-type(320px, 1280px, 24px, 26px);
+}
+
+// headline 4
+//---------------------------------------------
+.h4 {
+  @include fluid-type(320px, 1280px, 20px, 22px);
+}
+
+// headline 5
+//---------------------------------------------
+.h5 {
+  @include fluid-type(320px, 1280px, 18px, 20px);
+}

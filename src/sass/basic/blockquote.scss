@@ -1,0 +1,43 @@
+//= BLOCKQUOTES
+
+// blockquote
+//---------------------------------------------
+.blockquote {
+  display: block;
+  margin: 0 auto;
+  // padding: 20px 0;
+  max-width: 585px;
+  text-align: center;
+
+  &:after,
+  &:before {
+    content: '';
+    display: block;
+    margin: 20px auto;
+    width: 117px;
+    height: 2px;
+    background-color: $brand-color;
+  }
+}
+
+// text
+//---------------------------------------------
+.blockquote-text {
+  font-weight: 300;
+  font-size: 18px;
+
+  &:before,
+  &:after {
+    content: '" ';
+    font-size: 18px;
+    font-style: italic;
+  }
+}
+
+// author
+//---------------------------------------------
+.blockquote-autor {
+  font-style: italic;
+  margin-top: 5px;
+  font-style: 17px;
+}

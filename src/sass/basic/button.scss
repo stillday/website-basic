@@ -1,0 +1,106 @@
+// button style
+
+// general
+//---------------------------------------------
+.btn {
+  border-radius: 0;
+  display: inline-block;
+  padding: 15px 30px;
+  vertical-align: middle;
+  @include user-select(none);
+  touch-action: manipulation;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  //transition: all 0.1s ease 0s;
+  font-weight: 700;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &[disabled] {
+    pointer-events: none;
+  }
+}
+
+// primary
+//---------------------------------------------
+.btn--primary {
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  background: $brand-color;
+  color: #fff;
+
+
+  &:focus,
+  &:hover {
+    // border-color: #31465C;
+    background: $hover-color;
+    color: #fff;
+  }
+
+  &[disabled] {
+    border-color: #7d7d7d;
+    background-color: #7d7d7d;
+    color: #888;
+  }
+}
+
+
+// secondary
+//---------------------------------------------
+.btn--secondary {
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  background: #fff;
+  color: $brand-color;
+
+  &:focus,
+  &:hover {
+    // border-color: $brand-color;
+    background: $brand-color;
+    color: #fff;
+  }
+
+  &[disabled] {
+    border-color: #888;
+    background-color: #fff;
+    color: #888;
+  }
+}
+
+// btn-icon
+//---------------------------------------------
+.btn--icon {
+  color: #fff;
+  font-size: 20px;
+  &:focus,
+  &:hover {
+    // border-color: $brand-color;
+    // background: $hover-color;
+    color: $hover-color;
+  }
+
+  &[disabled] {
+    border-color: #888;
+    background-color: #fff;
+    color: #888;
+  }
+}
+
+// wallsio button
+//---------------------------------------------
+.wallsio-load-more-button {
+  background: #31465C;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 9px 23px;
+}
+

@@ -12,13 +12,19 @@ const del = require("del")
 const nunjucksRender = require("gulp-nunjucks-render")
 const sass = require('gulp-sass')
 const sourcemaps = require('gulp-sourcemaps')
+const imagemin = require('gulp-imagemin')
+const minify = require('gulp-minify')
 
 const dist = "dist/"
 const source = "src/"
 
 const css = {
-  in: source + "sass/*.scss",
-  out: dist + "css/",
+  in: [
+    source + "assets/sass/*.scss",
+    source + "../node_modules/lightgallery/src/sass/lightgallery.scss",
+    source + "../node_modules/animate.css/animate.css",
+  ],
+  out: dist + "assets/css/",
   sassOpts: {
     outputStyle: "compressed",
     errLogToConsole: true
@@ -26,14 +32,50 @@ const css = {
   autoprefixerOpts: {
     browsers: ['last 2 versions', '> 2%']
   },
-  watch: source + "sass/**/*"
+  watch: source + "assets/sass/**/*"
+}
+
+const jsplugin = {
+  in: [
+    source + "../node_modules/jquery/dist/jquery.js",
+    // lightgallery
+    source + "../node_modules/lightgallery/dist/js/lightgallery.js",
+    source + "../node_modules/lg-autoplay/src/lg-autoplay.js",
+    source + "../node_modules/lg-fullscreen/src/lg-fullscreen.js",
+    source + "../node_modules/lg-hash/src/lg-hash.js",
+    source + "../node_modules/lg-pager/src/lg-pager.js",
+    source + "../node_modules/lg-share/src/lg-share.js",
+    source + "../node_modules/lg-thumbnail/src/lg-thumbnail.js",
+    source + "../node_modules/lg-video/src/lg-video.js",
+    source + "../node_modules/lg-zoom/src/lg-zoom.js",
+    // image lazyloading
+    source + "../node_modules/vanilla-lazyload/dist/lazyload.js",
+  ],
+  out: dist + "js/",
 }
 
 const js = {
-  in: source + "scripts/**/*.js",
+  in: [
+    source + "scripts/**/*.js",
+  ],
   out: dist + "js/",
   watch: source + "scripts/**/*"
 };
+
+const img = {
+  in: source + "assets/img/**/*.+(png|jpg|gif|svg)",
+  out: dist + "assets/img/",
+  watch: source + "assets/img/**/*.+(png|jpg|gif|svg)"
+};
+
+const font = {
+  in: [
+    source + "assets/icon-font/fonts/*",
+    source + "assets/fonts/*",
+  ],
+  out: dist + "assets/fonts/",
+  watch: source + "assets/icon-font/fonts/*"
+}
 
 const nunjuck = {
   in: source + "pages/**/*.html",
@@ -67,7 +109,7 @@ function style(cb) {
     .pipe(sourcemaps.init())
     .pipe(sass(css.sassOpts))
     .pipe(autoprefixer(css.autoprefixerOpts))
-    .pipe(concat("app.css"))
+    .pipe(concat("application.css"))
     .pipe(sourcemaps.write('.'))
     .pipe(dest(css.out))
   watch(css.watch, series(style, browsersync.reload))
@@ -82,12 +124,46 @@ function script(cb) {
     .pipe(sourcemaps.init())
     .pipe(concat("app.js"))
     .pipe(sourcemaps.write("."))
+    .pipe(minify())
     .pipe(dest(js.out))
   watch(js.watch, series(script, browsersync.reload))
   cb()
 }
 // ------------------------------
 
+// ------------------------------
+// plugin task
+function srcplugin(cb) {
+  src(jsplugin.in)
+    .pipe(sourcemaps.init())
+    .pipe(concat("plugin.js"))
+    // .pipe(sourcemaps.write("."))
+    .pipe(minify())
+    .pipe(dest(jsplugin.out))
+  // watch(jsplugin.watch, series(srcplugin, browsersync.reload))
+  cb()
+}
+// ------------------------------
+
+// ------------------------------
+// image task
+function image(cb) {
+  src(img.in)
+    .pipe(imagemin())
+    .pipe(dest(img.out))
+  watch(img.watch, series(image, browsersync.reload))
+  cb()
+}
+// ------------------------------
+
+// ------------------------------
+// image task
+function iconfont(cb) {
+  src(font.in)
+    .pipe(dest(font.out))
+  watch(font.watch, series(iconfont, browsersync.reload))
+  cb()
+}
 
 // ------------------------------
 // html task
@@ -111,4 +187,4 @@ function bSync(cb) {
 }
 // ------------------------------
 
-exports.default = series(clean, style, script, html, bSync)
+exports.default = series(clean, style, script, srcplugin, image, iconfont, html, bSync)

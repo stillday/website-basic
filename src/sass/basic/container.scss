@@ -1,0 +1,27 @@
+// = CONTAINERS
+
+// widths
+// ---------------------------------
+
+// full width
+.container-full-width {
+  width: 100%;
+  position: relative;
+}
+
+// wide container with max-width
+.container-wide {
+  width: 100%;
+  max-width: $page-max-width;
+  position: relative;
+  margin: 0 auto;
+  @media (min-width: $desktop) {
+    padding: 0 9px;
+  }
+}
+
+.container-lg {
+  margin: 0 auto;
+  padding: 0 10px;
+  max-width: map-get($container-max-widths , lg);
+}
