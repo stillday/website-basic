@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
-    {% include "partials/head.html" %}   
+  <title>Website Basic</title>
+  {% include "partials/basic/HtmlMetaBlock.html" %}
 </head>
- 
+
 <body>
-    {% include "partials/navbar.html" %}
-    <main>
-      {% block content %} {% endblock %}
-    </main>
-    {% include "partials/footer.html" %}
+  {% include "partials/navbar.html" %}
+  <main>
+    {% block content %} {% endblock %}
+  </main>
+  {% include "partials/footer.html" %}
 </body>
- 
+{% include "partials/basic/PluginScriptBlock.html" %}
+
 </html>
